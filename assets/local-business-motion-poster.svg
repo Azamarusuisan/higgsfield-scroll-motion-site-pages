@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">店舗集客向けモーションLPの抽象ビジュアル</title>
+  <desc id="desc">黒背景に店舗の看板、予約導線、口コミカード、地図ピンを重ねたシネマティックな提案用ビジュアル。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#050505"/>
+      <stop offset="0.45" stop-color="#111827"/>
+      <stop offset="1" stop-color="#2b1608"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop stop-color="#f4c66a"/>
+      <stop offset="0.5" stop-color="#61d6bd"/>
+      <stop offset="1" stop-color="#ff5d8f"/>
+    </linearGradient>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="230" cy="180" r="170" fill="#f4c66a" opacity=".18" filter="url(#soft)"/>
+  <circle cx="970" cy="560" r="210" fill="#61d6bd" opacity=".14" filter="url(#soft)"/>
+  <circle cx="760" cy="130" r="150" fill="#ff5d8f" opacity=".14" filter="url(#soft)"/>
+  <g fill="none" stroke="url(#accent)" stroke-width="2" opacity=".35">
+    <path d="M80 620 C260 500 370 700 560 560 S900 390 1120 500"/>
+    <path d="M80 560 C270 420 390 610 560 470 S890 330 1110 420"/>
+  </g>
+  <g transform="translate(160 155)">
+    <rect width="420" height="270" rx="28" fill="#ffffff" opacity=".08" stroke="#ffffff" stroke-opacity=".22"/>
+    <rect x="34" y="38" width="220" height="28" rx="14" fill="#f4c66a"/>
+    <rect x="34" y="88" width="330" height="18" rx="9" fill="#ffffff" opacity=".78"/>
+    <rect x="34" y="122" width="255" height="14" rx="7" fill="#ffffff" opacity=".42"/>
+    <rect x="34" y="176" width="150" height="54" rx="16" fill="#61d6bd" opacity=".9"/>
+    <rect x="210" y="176" width="118" height="54" rx="16" fill="#ffffff" opacity=".12"/>
+  </g>
+  <g transform="translate(650 170)">
+    <rect width="310" height="460" rx="36" fill="#050505" stroke="#ffffff" stroke-opacity=".22"/>
+    <rect x="24" y="34" width="262" height="170" rx="26" fill="#1b2b2a"/>
+    <path d="M48 166 C92 84 154 196 202 116 S262 144 286 84" fill="none" stroke="#61d6bd" stroke-width="8" stroke-linecap="round"/>
+    <rect x="34" y="238" width="210" height="18" rx="9" fill="#ffffff" opacity=".75"/>
+    <rect x="34" y="276" width="238" height="12" rx="6" fill="#ffffff" opacity=".36"/>
+    <rect x="34" y="315" width="238" height="74" rx="22" fill="#ffffff" opacity=".09"/>
+    <circle cx="72" cy="352" r="18" fill="#ff5d8f"/>
+    <rect x="104" y="338" width="124" height="13" rx="6" fill="#ffffff" opacity=".65"/>
+    <rect x="104" y="362" width="86" height="10" rx="5" fill="#ffffff" opacity=".32"/>
+  </g>
+  <g transform="translate(214 500)">
+    <rect width="330" height="92" rx="26" fill="#ffffff" opacity=".1" stroke="#ffffff" stroke-opacity=".2"/>
+    <circle cx="52" cy="46" r="24" fill="#f4c66a"/>
+    <rect x="92" y="28" width="175" height="13" rx="6" fill="#ffffff" opacity=".75"/>
+    <rect x="92" y="55" width="116" height="10" rx="5" fill="#ffffff" opacity=".4"/>
+  </g>
+  <text x="160" y="705" fill="#f8fafc" font-family="Arial, sans-serif" font-size="44" font-weight="700">LOCAL MOTION LP</text>
+</svg>

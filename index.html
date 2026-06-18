@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="海外Xの5 repo stack風に、Higgsfield MCP生成動画をスクロールで動かす日本語モーションサイト。"
+      content="Higgsfield MCPで生成した3本の映像を1本につなぎ、スクロールで進める日本語モーションサイト。"
     />
-    <title>5 repo stackで作るスクロール動画LP | Higgsfield MCP Demo</title>
+    <title>スクロールで進む1本の動画 | Higgsfield MCP Demo</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -17,142 +17,48 @@
     <header class="site-header">
       <a class="brand-mark" href="#top" aria-label="トップへ戻る">HF</a>
       <nav class="site-nav" aria-label="主要ナビゲーション">
-        <a href="#stack">5 repo</a>
-        <a href="#scene-1">Hero</a>
-        <a href="#scene-2">Problem</a>
-        <a href="#scene-3">After</a>
+        <a href="#top">Scroll Film</a>
+        <a href="#proof">Result</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="intro" aria-labelledby="hero-title">
-        <video class="intro-video" autoplay muted loop playsinline>
-          <source src="./assets/videos/hero-background.mp4" type="video/mp4" />
-        </video>
-        <div class="intro-shade" aria-hidden="true"></div>
-        <div class="intro-copy reveal">
-          <p class="eyebrow">THESE 5 REPOS BUILD THE $35K-STUDIO MOTION SITE</p>
-          <h1 id="hero-title">海外Xのやつを、スクロール動画サイトにした。</h1>
-          <p class="lead">
-            Higgsfield MCPで生成した3本の動画を、ただ貼るだけではなく、スクロール量に合わせて進むモーションサイトとして組み込みました。
-          </p>
-          <div class="hero-actions">
-            <a class="primary-action" href="#scene-1">スクロールで見る</a>
-            <a class="secondary-action" href="#stack">5 repo stack</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="stack" class="stack-section" aria-labelledby="stack-title">
-        <div class="stack-copy reveal">
-          <p class="eyebrow">Tweet Stack</p>
-          <h2 id="stack-title">ツイートの見せ方に寄せて、5つの役割に分ける。</h2>
-        </div>
-        <div class="repo-stack">
-          <article class="repo-card reveal">
-            <span>01</span>
-            <h3>CLAUDEDESIGNSKILLS</h3>
-            <p>構図、3D/WebGL、スタジオ感の参考。非公式なのでinstallせずread-only。</p>
-          </article>
-          <article class="repo-card reveal">
-            <span>02</span>
-            <h3>GSAP-SKILLS</h3>
-            <p>スクロール連動、pinning、scrubの考え方。今回は依存なしで実装。</p>
-          </article>
-          <article class="repo-card reveal">
-            <span>03</span>
-            <h3>MOTION-DEV SKILL</h3>
-            <p>フェード、段階表示、数値、カードの動き。LPの演出に反映。</p>
-          </article>
-          <article class="repo-card reveal">
-            <span>04</span>
-            <h3>HIGGSFIELD SKILLS</h3>
-            <p>MCP経由でSeedance 2.0生成。16:9 / 6秒 / 1080pを3本。</p>
-          </article>
-          <article class="repo-card reveal">
-            <span>05</span>
-            <h3>SCROLL VIDEO SITE</h3>
-            <p>生成動画をスクロールでscrub。記事で見せやすい完成URLにする。</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="scene-1" class="scroll-scene" data-scene="hero">
-        <div class="sticky-frame">
-          <video class="scrub-video" muted playsinline preload="auto">
-            <source src="./assets/videos/hero-background.mp4" type="video/mp4" />
+      <section class="film-stage" aria-label="スクロール動画デモ">
+        <div class="sticky-film">
+          <video id="scroll-film" class="film-video" muted playsinline preload="auto">
+            <source src="./assets/videos/connected-scroll-film.mp4" type="video/mp4" />
           </video>
-          <div class="scene-shade" aria-hidden="true"></div>
-          <div class="scene-copy">
-            <p class="eyebrow">SCENE 01 / HERO</p>
-            <h2>店の空気感を、最初の3秒で見せる。</h2>
-            <p>背景動画はスクロール量に合わせて進みます。普通の自動再生ではなく、ユーザーの操作で映像が動く構成です。</p>
+          <div class="film-shade" aria-hidden="true"></div>
+
+          <div class="film-copy">
+            <p id="chapter-kicker">HIGGSFIELD MCP</p>
+            <h1 id="chapter-title">海外Xのやつ、再現。</h1>
           </div>
-          <div class="scrub-ui" aria-hidden="true">
-            <span></span>
-            <strong>Scroll to scrub video</strong>
+
+          <div class="film-ui" aria-hidden="true">
+            <div class="timeline"><span></span></div>
+            <ol class="chapter-dots">
+              <li class="is-active">Hero</li>
+              <li>Problem</li>
+              <li>After</li>
+            </ol>
           </div>
+
+          <p class="scroll-hint">scroll</p>
         </div>
       </section>
 
-      <section id="scene-2" class="scroll-scene" data-scene="problem">
-        <div class="sticky-frame">
-          <video class="scrub-video" muted playsinline preload="auto">
-            <source src="./assets/videos/problem-solution.mp4" type="video/mp4" />
-          </video>
-          <div class="scene-shade" aria-hidden="true"></div>
-          <div class="scene-copy right">
-            <p class="eyebrow">SCENE 02 / PROBLEM</p>
-            <h2>静的HPから、動く提案資料へ。</h2>
-            <p>看板文字や人物っぽい要素が少し出るのも、AI動画の現実です。だから採用・不採用を見ながらLPへ組み込みます。</p>
-          </div>
-          <div class="scrub-ui" aria-hidden="true">
-            <span></span>
-            <strong>Generated by Higgsfield MCP</strong>
-          </div>
+      <section id="proof" class="proof-section" aria-labelledby="proof-title">
+        <p class="eyebrow">RESULT</p>
+        <h2 id="proof-title">3本を、1本のスクロール動画に。</h2>
+        <div class="proof-grid">
+          <p>Higgsfield MCP</p>
+          <p>Connected MP4</p>
+          <p>Render Static Site</p>
         </div>
-      </section>
-
-      <section id="scene-3" class="scroll-scene" data-scene="after">
-        <div class="sticky-frame">
-          <video class="scrub-video" muted playsinline preload="auto">
-            <source src="./assets/videos/before-after.mp4" type="video/mp4" />
-          </video>
-          <div class="scene-shade" aria-hidden="true"></div>
-          <div class="scene-copy">
-            <p class="eyebrow">SCENE 03 / AFTER</p>
-            <h2>光でBefore / Afterを作る。</h2>
-            <p>最後は変化の印象を見せるシーン。店舗LPなら、内装・料理・施術・予約導線へ置き換えられます。</p>
-          </div>
-          <div class="scrub-ui" aria-hidden="true">
-            <span></span>
-            <strong>16:9 / 6s / 1080p</strong>
-          </div>
-        </div>
-      </section>
-
-      <section class="result-section" aria-labelledby="result-title">
-        <div class="result-copy reveal">
-          <p class="eyebrow">Result</p>
-          <h2 id="result-title">ツイートの感じにするなら、答えは「動画をスクロールで動かす」でした。</h2>
-          <p>
-            3本生成して、合計162 credits。完成URLとして見せるなら、noteにはスクショよりこのページを貼る方が強いです。
-          </p>
-        </div>
-        <div class="result-grid reveal">
-          <div>
-            <span data-count="5">0</span>
-            <small>repo / skill stack</small>
-          </div>
-          <div>
-            <span data-count="3">0</span>
-            <small>Higgsfield videos</small>
-          </div>
-          <div>
-            <span data-count="162">0</span>
-            <small>credits used</small>
-          </div>
-        </div>
+        <a class="live-link" href="https://higgsfield-scroll-motion-site.onrender.com/">
+          Renderで見る
+        </a>
       </section>
     </main>
 

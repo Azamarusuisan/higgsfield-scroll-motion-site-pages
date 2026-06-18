@@ -6,6 +6,8 @@
   --line: rgba(255, 255, 255, 0.18);
   --gold: #f4c66a;
   --teal: #61d6bd;
+  --rose: #ff8aa8;
+  --header-height: 4.8rem;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Hiragino Sans", "Yu Gothic", sans-serif;
@@ -70,8 +72,10 @@ canvas {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem clamp(1rem, 4vw, 3rem);
-  background: linear-gradient(180deg, rgba(3, 3, 3, 0.86), rgba(3, 3, 3, 0));
+  min-height: var(--header-height);
+  padding: 0.9rem clamp(1rem, 4vw, 3rem);
+  background: linear-gradient(180deg, rgba(3, 3, 3, 0.94), rgba(3, 3, 3, 0.42) 70%, rgba(3, 3, 3, 0));
+  backdrop-filter: blur(14px);
 }
 
 .brand-mark {
@@ -94,10 +98,29 @@ canvas {
   font-weight: 900;
 }
 
+.site-nav a,
+.header-link {
+  border-bottom: 1px solid transparent;
+  padding: 0.35rem 0;
+}
+
+.site-nav a:hover,
+.header-link:hover {
+  color: var(--ink);
+  border-color: var(--gold);
+}
+
+.header-link {
+  color: rgba(255, 247, 234, 0.86);
+  font-size: 0.78rem;
+  font-weight: 950;
+}
+
 .film-stage {
   position: relative;
-  height: 620vh;
+  height: 680vh;
   background: #030303;
+  --chapter-count: 3;
 }
 
 .sticky-film {
@@ -114,7 +137,7 @@ canvas {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(1.2) contrast(1.1) saturate(1.08);
+  filter: brightness(1.16) contrast(1.12) saturate(1.08);
   transform: scale(1.01);
 }
 
@@ -122,17 +145,17 @@ canvas {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 58% 42%, rgba(255, 255, 255, 0.05), transparent 34%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.14) 52%, rgba(0, 0, 0, 0.58)),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.78));
+    radial-gradient(circle at 62% 38%, rgba(255, 255, 255, 0.06), transparent 34%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.16) 56%, rgba(0, 0, 0, 0.64)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.84));
 }
 
 .film-copy {
   position: absolute;
   left: clamp(1.25rem, 5vw, 5rem);
-  bottom: clamp(6rem, 13vh, 8rem);
+  bottom: clamp(7.8rem, 14vh, 9rem);
   z-index: 2;
-  max-width: min(34rem, 82vw);
+  max-width: min(39rem, 86vw);
 }
 
 .film-copy p,
@@ -158,13 +181,41 @@ h2 {
 }
 
 h1 {
-  max-width: 10ch;
-  font-size: clamp(2.6rem, 5vw, 4.8rem);
+  max-width: 12ch;
+  font-size: clamp(3rem, 6.4vw, 6.7rem);
 }
 
 h2 {
-  max-width: 10ch;
-  font-size: clamp(3rem, 7vw, 6.5rem);
+  max-width: 11ch;
+  font-size: clamp(3rem, 7vw, 6.8rem);
+}
+
+.chapter-caption,
+.proof-copy p {
+  max-width: 46rem;
+  margin: 1rem 0 0;
+  color: rgba(255, 247, 234, 0.72);
+  font-size: clamp(0.95rem, 1.25vw, 1.08rem);
+  font-weight: 650;
+  line-height: 1.85;
+}
+
+.film-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.15rem;
+}
+
+.film-tags span {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 0.52rem 0.7rem;
+  color: rgba(255, 247, 234, 0.72);
+  background: rgba(0, 0, 0, 0.34);
+  font-size: 0.72rem;
+  font-weight: 950;
+  text-transform: uppercase;
 }
 
 .film-ui {
@@ -174,7 +225,7 @@ h2 {
   z-index: 2;
   display: grid;
   gap: 0.85rem;
-  width: min(22rem, calc(100vw - 2rem));
+  width: min(28rem, calc(100vw - 2rem));
 }
 
 .timeline {
@@ -192,7 +243,7 @@ h2 {
 
 .chapter-dots {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(var(--chapter-count, 3), minmax(0, 1fr));
   gap: 0.45rem;
   margin: 0;
   padding: 0;
@@ -206,6 +257,9 @@ h2 {
 .chapter-dots li {
   border-top: 1px solid rgba(255, 255, 255, 0.24);
   padding-top: 0.42rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .chapter-dots li.is-active {
@@ -225,65 +279,216 @@ h2 {
   text-transform: uppercase;
 }
 
+.film-counter {
+  position: absolute;
+  top: clamp(5.5rem, 10vw, 7rem);
+  right: clamp(1rem, 3vw, 3rem);
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  color: rgba(255, 247, 234, 0.68);
+  font-weight: 950;
+}
+
+.film-counter span:first-child {
+  color: var(--ink);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.film-counter span:last-child::before {
+  content: "/";
+  margin-right: 0.55rem;
+  color: rgba(255, 255, 255, 0.28);
+}
+
 .proof-section {
   display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr);
   min-height: 100vh;
-  align-content: center;
-  gap: 2rem;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
   padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 5vw, 5rem);
   background:
-    radial-gradient(circle at 80% 15%, rgba(97, 214, 189, 0.12), transparent 34%),
-    linear-gradient(180deg, #030303, #090806 70%, #030303);
+    radial-gradient(circle at 82% 18%, rgba(97, 214, 189, 0.14), transparent 30%),
+    radial-gradient(circle at 12% 90%, rgba(244, 198, 106, 0.1), transparent 36%),
+    linear-gradient(180deg, #030303, #080806 70%, #030303);
 }
 
 .proof-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
 }
 
-.proof-grid p,
-.live-link {
+.proof-grid p {
   margin: 0;
   border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 0.72rem 0.95rem;
+  border-radius: 8px;
+  padding: 1rem;
   color: var(--soft);
   background: rgba(255, 255, 255, 0.06);
-  font-size: 0.86rem;
+  font-size: 0.92rem;
   font-weight: 900;
 }
 
+.proof-grid span {
+  margin-right: 0.65rem;
+  color: var(--gold);
+}
+
+.proof-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  grid-column: 1 / -1;
+}
+
+.live-link,
+.ghost-link {
+  display: inline-flex;
+  min-height: 2.85rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.78rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 950;
+}
+
 .live-link {
-  width: fit-content;
   color: #09110f;
   background: linear-gradient(135deg, var(--gold), var(--teal));
 }
 
+.ghost-link {
+  border: 1px solid var(--line);
+  color: var(--soft);
+  background: rgba(255, 255, 255, 0.06);
+}
+
 @media (max-width: 740px) {
+  :root {
+    --header-height: 4.2rem;
+  }
+
+  .site-header {
+    gap: 0.7rem;
+    padding: 0.72rem 0.9rem;
+  }
+
+  .brand-mark {
+    width: 2.35rem;
+    height: 2.35rem;
+  }
+
   .site-nav {
-    gap: 0.75rem;
-    font-size: 0.76rem;
+    min-width: 0;
+    flex: 1;
+    gap: 0.7rem;
+    overflow-x: auto;
+    font-size: 0.75rem;
+    scrollbar-width: none;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-nav a {
+    flex: 0 0 auto;
+  }
+
+  .header-link {
+    display: none;
   }
 
   .film-stage {
-    height: 540vh;
+    height: 600vh;
   }
 
   h1 {
-    font-size: clamp(2.4rem, 13vw, 4.6rem);
+    max-width: none;
+    font-size: clamp(2.65rem, 12vw, 3.65rem);
+    line-height: 0.98;
   }
 
   h2 {
-    font-size: clamp(3rem, 18vw, 5.5rem);
+    max-width: 8ch;
+    font-size: clamp(2.8rem, 15vw, 5rem);
+  }
+
+  .film-video {
+    object-position: 52% center;
+  }
+
+  .film-shade {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.16) 44%, rgba(0, 0, 0, 0.9)),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.48), transparent 70%);
+  }
+
+  .film-copy {
+    top: calc(var(--header-height) + 1rem);
+    bottom: auto;
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
+
+  .chapter-caption {
+    max-width: 25rem;
+    margin-top: 0.85rem;
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  .film-tags {
+    gap: 0.42rem;
+    margin-top: 0.85rem;
+  }
+
+  .film-tags span {
+    padding: 0.45rem 0.55rem;
+    font-size: 0.64rem;
+  }
+
+  .film-counter {
+    top: auto;
+    right: 1rem;
+    bottom: calc(7.7rem + env(safe-area-inset-bottom));
   }
 
   .film-ui {
+    left: 1rem;
     right: 1rem;
-    bottom: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+    width: auto;
+  }
+
+  .chapter-dots {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 0.7rem;
+    font-size: 0.68rem;
   }
 
   .scroll-hint {
     display: none;
+  }
+
+  .proof-section {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 5rem 1rem;
+  }
+
+  .proof-copy p {
+    font-size: 0.94rem;
+    line-height: 1.75;
+  }
+
+  .proof-actions {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 }

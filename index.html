@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Higgsfield MCPで生成した3本の映像を1本につなぎ、スクロールで進める日本語モーションサイト。"
+      content="東京散歩の映像を1本につなぎ、スクロールで進める日本語モーションサイト。PCとスマホで検証済みのHiggsfield MCPデモ。"
     />
-    <title>スクロールで進む1本の動画 | Higgsfield MCP Demo</title>
+    <title>東京を歩く | Higgsfield Scroll Motion Site</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -15,12 +15,13 @@
     <div class="grain" aria-hidden="true"></div>
 
     <header class="site-header">
-      <a class="brand-mark" href="#top" aria-label="トップへ戻る">HF</a>
+      <a class="brand-mark" href="#top" aria-label="トップへ戻る">TW</a>
       <nav class="site-nav" aria-label="主要ナビゲーション">
-        <a href="#tokyo">Tokyo</a>
-        <a href="#motion">Motion</a>
-        <a href="#proof">Result</a>
+        <a href="#tokyo">東京散歩</a>
+        <a href="#motion">現行版</a>
+        <a href="#proof">結果</a>
       </nav>
+      <a class="header-link" href="#proof">Live URL</a>
     </header>
 
     <main id="top">
@@ -34,17 +35,30 @@
           <div class="film-copy">
             <p class="chapter-kicker">TOKYO WALK</p>
             <h1 class="chapter-title">東京を歩く。</h1>
+            <p class="chapter-caption">
+              Higgsfieldの東京素材をつなぎ、スクロール量に合わせて夜の路地から駅前へ進む。
+            </p>
+            <div class="film-tags" aria-label="構成">
+              <span>4 chapters</span>
+              <span>scroll synced</span>
+              <span>Japanese page</span>
+            </div>
           </div>
 
           <div class="film-ui" aria-hidden="true">
             <div class="timeline"><span></span></div>
             <ol class="chapter-dots">
               <li class="is-active">Alley</li>
+              <li>Walk</li>
               <li>Crossing</li>
               <li>Station</li>
             </ol>
           </div>
 
+          <div class="film-counter" aria-hidden="true">
+            <span class="counter-current">01</span>
+            <span class="counter-total">04</span>
+          </div>
           <p class="scroll-hint">scroll</p>
         </div>
       </section>
@@ -59,6 +73,14 @@
           <div class="film-copy">
             <p class="chapter-kicker">ORIGINAL MOTION</p>
             <h1 class="chapter-title">現行版も残す。</h1>
+            <p class="chapter-caption">
+              抽象モーション版も比較用に残し、同じスクロール体験で見られるようにした。
+            </p>
+            <div class="film-tags" aria-label="構成">
+              <span>3 chapters</span>
+              <span>comparison</span>
+              <span>render live</span>
+            </div>
           </div>
 
           <div class="film-ui" aria-hidden="true">
@@ -70,21 +92,37 @@
             </ol>
           </div>
 
+          <div class="film-counter" aria-hidden="true">
+            <span class="counter-current">01</span>
+            <span class="counter-total">03</span>
+          </div>
           <p class="scroll-hint">scroll</p>
         </div>
       </section>
 
       <section id="proof" class="proof-section" aria-labelledby="proof-title">
-        <p class="eyebrow">RESULT</p>
-        <h2 id="proof-title">2本作った。</h2>
-        <div class="proof-grid">
-          <p>Tokyo Walk</p>
-          <p>Original Motion</p>
-          <p>Render Static Site</p>
+        <div class="proof-copy">
+          <p class="eyebrow">RESULT</p>
+          <h2 id="proof-title">2本のスクロール動画。</h2>
+          <p>
+            東京散歩版は4チャプター構成。現行モーション版は比較用として残しています。
+            どちらも動画をただ貼るのではなく、スクロール位置で再生位置を制御しています。
+          </p>
         </div>
-        <a class="live-link" href="https://higgsfield-scroll-motion-site.onrender.com/">
-          Renderで見る
-        </a>
+        <div class="proof-grid" aria-label="実装内容">
+          <p><span>01</span> Tokyo Walk 4 chapters</p>
+          <p><span>02</span> Original Motion preserved</p>
+          <p><span>03</span> Mobile layout tuned</p>
+          <p><span>04</span> Render Static Site</p>
+        </div>
+        <div class="proof-actions">
+          <a class="live-link" href="https://higgsfield-scroll-motion-site.onrender.com/">
+            Renderで見る
+          </a>
+          <a class="ghost-link" href="#tokyo">
+            もう一度見る
+          </a>
+        </div>
       </section>
     </main>
 

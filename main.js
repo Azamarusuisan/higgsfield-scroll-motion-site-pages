@@ -5,8 +5,9 @@ const context = canvas.getContext("2d", { alpha: true });
 const chapterSets = {
   tokyo: [
     { at: 0, kicker: "TOKYO WALK / ALLEY", title: "東京を歩く。" },
-    { at: 0.34, kicker: "TOKYO WALK / CROSSING", title: "雨の交差点へ。" },
-    { at: 0.67, kicker: "TOKYO WALK / STATION", title: "駅前で終わる。" }
+    { at: 0.25, kicker: "TOKYO WALK / YOKOCHO", title: "路地の奥へ。" },
+    { at: 0.5, kicker: "TOKYO WALK / CROSSING", title: "雨の交差点へ。" },
+    { at: 0.75, kicker: "TOKYO WALK / STATION", title: "駅前で終わる。" }
   ],
   motion: [
     { at: 0, kicker: "ORIGINAL / HERO", title: "現行版も残す。" },
@@ -20,6 +21,8 @@ const stages = Array.from(document.querySelectorAll(".film-stage")).map((stage) 
   video: stage.querySelector(".film-video"),
   title: stage.querySelector(".chapter-title"),
   kicker: stage.querySelector(".chapter-kicker"),
+  current: stage.querySelector(".counter-current"),
+  total: stage.querySelector(".counter-total"),
   dots: Array.from(stage.querySelectorAll(".chapter-dots li")),
   chapters: chapterSets[stage.dataset.film] || chapterSets.motion
 }));
@@ -94,6 +97,7 @@ function chapterFor(chapters, progress) {
 function updateStage(stage) {
   const progress = progressFor(stage);
   stage.node.style.setProperty("--film-progress", progress.toFixed(4));
+  stage.node.style.setProperty("--chapter-count", String(stage.dots.length || stage.chapters.length));
 
   if (stage.video && Number.isFinite(stage.video.duration) && stage.video.duration > 0) {
     const targetTime = Math.min(
@@ -108,6 +112,8 @@ function updateStage(stage) {
   const { chapter, index } = chapterFor(stage.chapters, progress);
   if (stage.title && stage.title.textContent !== chapter.title) stage.title.textContent = chapter.title;
   if (stage.kicker && stage.kicker.textContent !== chapter.kicker) stage.kicker.textContent = chapter.kicker;
+  if (stage.current) stage.current.textContent = String(index + 1).padStart(2, "0");
+  if (stage.total) stage.total.textContent = String(stage.chapters.length).padStart(2, "0");
   stage.dots.forEach((dot, dotIndex) => {
     dot.classList.toggle("is-active", dotIndex === index);
   });
@@ -126,6 +132,7 @@ function requestFilmUpdate() {
 
 function setupFilms() {
   stages.forEach((stage) => {
+    stage.node.style.setProperty("--chapter-count", String(stage.dots.length || stage.chapters.length));
     if (!stage.video) return;
     stage.video.pause();
     stage.video.muted = true;

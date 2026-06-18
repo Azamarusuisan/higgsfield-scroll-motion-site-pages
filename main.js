@@ -100,12 +100,15 @@ function updateStage(stage) {
   stage.node.style.setProperty("--chapter-count", String(stage.dots.length || stage.chapters.length));
 
   if (stage.video && Number.isFinite(stage.video.duration) && stage.video.duration > 0) {
+    stage.video.classList.add("is-ready");
     const targetTime = Math.min(
       stage.video.duration - 0.08,
       Math.max(0.01, progress * stage.video.duration)
     );
     if (Math.abs(stage.video.currentTime - targetTime) > 0.055) {
-      stage.video.currentTime = targetTime;
+      try {
+        stage.video.currentTime = targetTime;
+      } catch {}
     }
   }
 
@@ -130,17 +133,54 @@ function requestFilmUpdate() {
   requestAnimationFrame(updateFilms);
 }
 
+function warmVideo(stage) {
+  const { video } = stage;
+  if (!video) return;
+
+  video.muted = true;
+  video.defaultMuted = true;
+  video.playsInline = true;
+  video.setAttribute("muted", "");
+  video.setAttribute("playsinline", "");
+  video.setAttribute("webkit-playsinline", "");
+  video.setAttribute("preload", "auto");
+
+  try {
+    video.load();
+  } catch {}
+
+  const markReady = () => {
+    video.classList.add("is-ready");
+    updateStage(stage);
+  };
+
+  video.addEventListener("loadeddata", markReady, { once: true });
+  video.addEventListener("canplay", markReady, { once: true });
+
+  const attempt = video.play();
+  if (attempt && typeof attempt.then === "function") {
+    attempt
+      .then(() => {
+        video.pause();
+        markReady();
+      })
+      .catch(() => {});
+  } else {
+    markReady();
+  }
+}
+
 function setupFilms() {
   stages.forEach((stage) => {
     stage.node.style.setProperty("--chapter-count", String(stage.dots.length || stage.chapters.length));
     if (!stage.video) return;
-    stage.video.pause();
-    stage.video.muted = true;
-    stage.video.playsInline = true;
     stage.video.addEventListener("loadedmetadata", () => {
-      stage.video.currentTime = 0.01;
+      try {
+        stage.video.currentTime = 0.01;
+      } catch {}
       updateStage(stage);
     });
+    warmVideo(stage);
   });
 }
 

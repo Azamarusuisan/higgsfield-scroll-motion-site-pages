@@ -26,8 +26,8 @@
 
     <main id="top">
       <section id="tokyo" class="film-stage" data-film="tokyo" aria-label="東京散歩スクロール動画">
-        <div class="sticky-film">
-          <video class="film-video" muted playsinline preload="auto">
+        <div class="sticky-film" style="--poster-image: url('./assets/posters/tokyo-poster.jpg')">
+          <video class="film-video" muted playsinline webkit-playsinline preload="auto" autoplay poster="./assets/posters/tokyo-poster.jpg">
             <source src="./assets/videos/tokyo-scroll-film.mp4" type="video/mp4" />
           </video>
           <div class="film-shade" aria-hidden="true"></div>
@@ -64,8 +64,8 @@
       </section>
 
       <section id="motion" class="film-stage" data-film="motion" aria-label="現行モーションスクロール動画">
-        <div class="sticky-film">
-          <video class="film-video" muted playsinline preload="auto">
+        <div class="sticky-film" style="--poster-image: url('./assets/posters/motion-poster.jpg')">
+          <video class="film-video" muted playsinline webkit-playsinline preload="auto" autoplay poster="./assets/posters/motion-poster.jpg">
             <source src="./assets/videos/connected-scroll-film.mp4" type="video/mp4" />
           </video>
           <div class="film-shade" aria-hidden="true"></div>

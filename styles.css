@@ -128,7 +128,10 @@ canvas {
   top: 0;
   height: 100vh;
   overflow: hidden;
-  background: #030303;
+  background:
+    linear-gradient(180deg, rgba(3, 3, 3, 0.12), rgba(3, 3, 3, 0.42)),
+    var(--poster-image, none) center / cover no-repeat,
+    #030303;
 }
 
 .film-video {
@@ -137,8 +140,15 @@ canvas {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  background: var(--poster-image, none) center / cover no-repeat;
   filter: brightness(1.16) contrast(1.12) saturate(1.08);
   transform: scale(1.01);
+  opacity: 0.001;
+  transition: opacity 220ms ease;
+}
+
+.film-video.is-ready {
+  opacity: 1;
 }
 
 .film-shade {
@@ -429,7 +439,7 @@ h2 {
   }
 
   .film-copy {
-    top: calc(var(--header-height) + 1rem);
+    top: calc(var(--header-height) + 0.8rem);
     bottom: auto;
     left: 1rem;
     right: 1rem;
@@ -438,9 +448,9 @@ h2 {
 
   .chapter-caption {
     max-width: 25rem;
-    margin-top: 0.85rem;
-    font-size: 0.88rem;
-    line-height: 1.7;
+    margin-top: 0.72rem;
+    font-size: 0.82rem;
+    line-height: 1.58;
   }
 
   .film-tags {
@@ -450,7 +460,11 @@ h2 {
 
   .film-tags span {
     padding: 0.45rem 0.55rem;
-    font-size: 0.64rem;
+    font-size: 0.62rem;
+  }
+
+  .film-tags span:nth-child(n + 3) {
+    display: none;
   }
 
   .film-counter {

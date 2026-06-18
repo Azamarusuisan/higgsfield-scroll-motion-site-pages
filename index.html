@@ -17,22 +17,48 @@
     <header class="site-header">
       <a class="brand-mark" href="#top" aria-label="トップへ戻る">HF</a>
       <nav class="site-nav" aria-label="主要ナビゲーション">
-        <a href="#top">Scroll Film</a>
+        <a href="#tokyo">Tokyo</a>
+        <a href="#motion">Motion</a>
         <a href="#proof">Result</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="film-stage" aria-label="スクロール動画デモ">
+      <section id="tokyo" class="film-stage" data-film="tokyo" aria-label="東京散歩スクロール動画">
         <div class="sticky-film">
-          <video id="scroll-film" class="film-video" muted playsinline preload="auto">
+          <video class="film-video" muted playsinline preload="auto">
+            <source src="./assets/videos/tokyo-scroll-film.mp4" type="video/mp4" />
+          </video>
+          <div class="film-shade" aria-hidden="true"></div>
+
+          <div class="film-copy">
+            <p class="chapter-kicker">TOKYO WALK</p>
+            <h1 class="chapter-title">東京を歩く。</h1>
+          </div>
+
+          <div class="film-ui" aria-hidden="true">
+            <div class="timeline"><span></span></div>
+            <ol class="chapter-dots">
+              <li class="is-active">Alley</li>
+              <li>Crossing</li>
+              <li>Station</li>
+            </ol>
+          </div>
+
+          <p class="scroll-hint">scroll</p>
+        </div>
+      </section>
+
+      <section id="motion" class="film-stage" data-film="motion" aria-label="現行モーションスクロール動画">
+        <div class="sticky-film">
+          <video class="film-video" muted playsinline preload="auto">
             <source src="./assets/videos/connected-scroll-film.mp4" type="video/mp4" />
           </video>
           <div class="film-shade" aria-hidden="true"></div>
 
           <div class="film-copy">
-            <p id="chapter-kicker">HIGGSFIELD MCP</p>
-            <h1 id="chapter-title">海外Xのやつ、再現。</h1>
+            <p class="chapter-kicker">ORIGINAL MOTION</p>
+            <h1 class="chapter-title">現行版も残す。</h1>
           </div>
 
           <div class="film-ui" aria-hidden="true">
@@ -50,10 +76,10 @@
 
       <section id="proof" class="proof-section" aria-labelledby="proof-title">
         <p class="eyebrow">RESULT</p>
-        <h2 id="proof-title">3本を、1本のスクロール動画に。</h2>
+        <h2 id="proof-title">2本作った。</h2>
         <div class="proof-grid">
-          <p>Higgsfield MCP</p>
-          <p>Connected MP4</p>
+          <p>Tokyo Walk</p>
+          <p>Original Motion</p>
           <p>Render Static Site</p>
         </div>
         <a class="live-link" href="https://higgsfield-scroll-motion-site.onrender.com/">
